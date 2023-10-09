@@ -3,6 +3,7 @@ import torch
 import torch.optim as optim
 from torch import nn
 # from sklearn.svm import SVC
+import sys
 
 import paper
 
@@ -288,13 +289,22 @@ def k_fusion(dataset, num_q, params, labels):
 
 # ---
 # INITIALISATION OF VARIABLES
-# qubits/wires: 5 used in paper
-# block number (how often is circuit repeated): "issue" only impair numbers work correctly by now
+#
+# epochs:       How often optimized in training process
+# print_at:     Every "print_at" times the loss is printed
+#
+# qubits/wires: 5 used in paper, too high number of qubits (10) -> DefaultCPUAllocator: not enough memory
+# block number: (how often is circuit repeated): "issue" only impair numbers work correctly by now
 #
 # ---
 
-NUMBER_OF_QUBITS = 5
-NUMBER_OF_BLOCKS = 5
+NUMBER_OF_EPOCHS = int(sys.argv[1])  # 1000
+PRINT_AT = int(sys.argv[2])          # 100
+
+NUMBER_OF_QUBITS = int(sys.argv[3])  # 5
+NUMBER_OF_BLOCKS = int(sys.argv[4])  # 5
+
+# print(NUMBER_OF_EPOCHS, PRINT_AT, NUMBER_OF_QUBITS, NUMBER_OF_BLOCKS)
 
 
 # ---
@@ -369,7 +379,8 @@ def train(n_epochs, print_at):
             print("epoch:", epoch, 'loss:', -loss.item())
 
 
-cProfile.run("train(90, 10)")
+cProfile.run("train(NUMBER_OF_EPOCHS, PRINT_AT)")
+
 
 end_time = time.time()
 exec_time = end_time - start_time
