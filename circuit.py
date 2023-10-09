@@ -303,8 +303,7 @@ PRINT_AT = int(sys.argv[2])          # 100
 
 NUMBER_OF_QUBITS = int(sys.argv[3])  # 5
 NUMBER_OF_BLOCKS = int(sys.argv[4])  # 5
-
-# print(NUMBER_OF_EPOCHS, PRINT_AT, NUMBER_OF_QUBITS, NUMBER_OF_BLOCKS)
+LEARNING_RATE = int(sys.argv[5])     # 0.05
 
 
 # ---
@@ -326,9 +325,6 @@ class QuantumNet(nn.Module):
     def forward(self, data, labels):
         kta = self.fusion(data, self.n_qubits, self.params, labels)
         return kta
-
-
-model = QuantumNet(n_qubits=NUMBER_OF_QUBITS, parameters=random_params(NUMBER_OF_BLOCKS, NUMBER_OF_QUBITS))
 
 
 # ---
@@ -354,9 +350,9 @@ def kta_loss(kta_val):
 # Training Function used to keep track of time and memory usage
 #
 # ---
+model = QuantumNet(n_qubits=NUMBER_OF_QUBITS, parameters=random_params(NUMBER_OF_BLOCKS, NUMBER_OF_QUBITS))
 
-
-optimizer = optim.Adam(model.parameters(), lr=0.05)
+optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
 
 model.train()
 
