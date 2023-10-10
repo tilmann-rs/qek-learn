@@ -36,11 +36,7 @@ LEARNING_RATE = float(sys.argv[5])     # 0.05
 train = q_ann.train
 
 # add cProfile.run after
-resulting_parameter = train(NUMBER_OF_EPOCHS, PRINT_AT, NUMBER_OF_QUBITS, NUMBER_OF_BLOCKS, LEARNING_RATE)
-
-# Save Data in separate file
-with open(resulting_parameter_file, "w", encoding="utf-8") as file:
-    file.write(str(resulting_parameter))
+cProfile.run("train(NUMBER_OF_EPOCHS, PRINT_AT, NUMBER_OF_QUBITS, NUMBER_OF_BLOCKS, LEARNING_RATE, resulting_parameter_file)")
 
 
 # - TIME MANAGEMENT -
