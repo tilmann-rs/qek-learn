@@ -37,7 +37,7 @@ def test_in_qiskit(number_qubits, number_blocks, trained_params):
     (X, Y) = cake.data()
 
     circuit = QuantumCircuit(num_qubits)
-    
+
 
     k_val = q_ann.k_fusion(X, num_qubits, trained_params, Y)
 

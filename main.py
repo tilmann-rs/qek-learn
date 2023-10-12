@@ -2,7 +2,6 @@ import sys
 import time
 
 import q_ann
-import qiskit_test
 
 # - TIME MANAGEMENT
 start_time = time.time()
