@@ -1,19 +1,15 @@
 import sys
-import cProfile
 import time
 
 import q_ann
+import qiskit_test
 
-
-# - TIME MANAGEMENT & FILE DECLARATION
+# - TIME MANAGEMENT
 start_time = time.time()
-prof = cProfile.Profile()
 
-stats_file = "stats.txt"
-resulting_parameter_file = "resulting_params.txt"
 
 # ---
-# INITIALISATION OF VARIABLES
+# INITIALISATION OF VARIABLES & FILE DECLARATION
 #
 # epochs:       How often optimized in training process
 # print_at:     Every "print_at" times the loss is printed
@@ -31,16 +27,24 @@ NUMBER_OF_BLOCKS = int(sys.argv[4])  # 5
 
 LEARNING_RATE = float(sys.argv[5])     # 0.05
 
+resulting_parameter_file = "resulting_params"+"_"+str(NUMBER_OF_EPOCHS)+"_"+str(NUMBER_OF_QUBITS)+"_"+str(NUMBER_OF_BLOCKS)+"_"+str(LEARNING_RATE)+".txt"
+
 
 # --- TRAIN & SAVE PARAMETERS ---
-train = q_ann.train
 
-# add cProfile.run after
-cProfile.run("train(NUMBER_OF_EPOCHS, PRINT_AT, NUMBER_OF_QUBITS, NUMBER_OF_BLOCKS, LEARNING_RATE, resulting_parameter_file)")
+hyper_parameters = "hyper parameters: _ " + str(NUMBER_OF_EPOCHS) + " (epochs) _ " + str(NUMBER_OF_QUBITS) + " (qubits) _ " \
+                   + str(NUMBER_OF_BLOCKS) + " (blocks) _ " + str(LEARNING_RATE) + "  (learning rate)" + ".res" + "\n"
+
+with open(resulting_parameter_file, "w", encoding="utf-8") as file:
+    file.write(hyper_parameters)
+
+resulting_parameters = q_ann.train(NUMBER_OF_EPOCHS, PRINT_AT, NUMBER_OF_QUBITS, NUMBER_OF_BLOCKS, LEARNING_RATE)
+
+with open(resulting_parameter_file, "a", encoding="utf-8") as file:
+    file.write(str(resulting_parameters))
 
 
 # - TIME MANAGEMENT -
-prof.dump_stats(stats_file)
 end_time = time.time()
 exec_time = end_time - start_time
 print(f"Execution Time: {exec_time}")

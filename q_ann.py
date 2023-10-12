@@ -135,7 +135,7 @@ def kta_loss(kta_val):
 #   - saves the resulting optimized parameters in separate file
 #
 # ---
-def train(n_epochs, print_at, n_qubits, n_blocks, learning_rate, result_file):
+def train(n_epochs, print_at, n_qubits, n_blocks, learning_rate):
 
     model = QuantumNet(n_qubits=n_qubits, parameters=random_params(n_blocks, n_qubits))
 
@@ -164,15 +164,10 @@ def train(n_epochs, print_at, n_qubits, n_blocks, learning_rate, result_file):
 
     result = model.state_dict().values()
     trained_params = [tensor.tolist() for tensor in result][0]
-    print(trained_params)
-    # Save Data in separate file
-    with open(result_file, "w", encoding="utf-8") as file:
-        file.write(str(trained_params))
 
+    return trained_params
 
-
-
-
-
-
+    # trained_model = QuantumNet(n_qubits=n_qubits, parameters=result)
+    # result_kta = trained_model(X, Y)
+    # print('kta-value:', result_kta.item())
 
