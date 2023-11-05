@@ -30,6 +30,7 @@ cake.NUMBER_OF_SECTORS = NUMBER_OF_SECTORS
 # else:
 #     print("Invalid response. Please enter 'yes' or 'no'.")
 
+
 # Getting the trained parameters
 parameters_string = []
 test_parameter_file = "results/resulting_params" + "_" + str(NUMBER_OF_EPOCHS) + "_" + str(NUMBER_OF_QUBITS) + "_" + str(NUMBER_OF_BLOCKS) + \
@@ -43,21 +44,24 @@ else:
 parameters_list = ast.literal_eval(parameters_string)
 
 
+# Generation of random parameters depending on the given hyperparameters
+torch.manual_seed(1401)  # same seed than in q_ann
 def random_torch_params():
     return 2 * torch.pi * torch.rand((NUMBER_OF_BLOCKS, qc.NUMBER_OF_BLOCK_PARAMS, NUMBER_OF_QUBITS), dtype=torch.float64, requires_grad=False)
 
 
+# Returns a float value which indicates how many datapoints were correctly classified
 def get_accuracy(classifier, x, y):
     return 1 - np.count_nonzero(classifier.predict(x) - y) / len(y)
 
 
-torch.manual_seed(1401)  # same seed than in q_ann
-
-# DATA
+# Cake data initialization
 (X, Y) = cake.data()
 (X, Y) = (X.detach().numpy(), Y.detach().numpy())
 
 
+# Tests the parameters with help of the pennylane library and also the kernel function of paper.py, needs to be adjusted
+# in paper.py when testing a file with a different quantum embedding
 def pennylane_tester(parameters, x, y):
     kernel = lambda x1, x2: pa.kernel(x1, x2, parameters)
     kernel_matrix = lambda x1, x2: qml.kernels.kernel_matrix(x1, x2, kernel)

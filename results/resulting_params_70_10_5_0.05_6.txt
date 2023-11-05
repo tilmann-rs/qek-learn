@@ -1,0 +1,1 @@
+hyper parameters:   70 (epochs)   10 (qubits)   5 (blocks)   0.05(learning rate)   6 (number of sectors).res
