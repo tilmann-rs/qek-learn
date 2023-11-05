@@ -78,16 +78,18 @@ def pennylane_tester(parameters, x, y):
 print("-- UNTRAINED --")
 random_parameters = random_torch_params().numpy()
 svm_untrained = pennylane_tester(random_parameters, X, Y)
-print("plotting the untrained decision boundaries...")
-untrained_plot_data = cake.plot_decision_boundaries(svm_untrained, plt.gca(), X, Y)
-print("close plot window to continue")
-plt.show()
 
 
 print("-- TRAINED --")
 trained_parameters = np.array(parameters_list)
 svm_trained = pennylane_tester(trained_parameters, X, Y)
+print("--")
+
 if PLOTTING:
+    print("plotting the untrained decision boundaries...")
+    untrained_plot_data = cake.plot_decision_boundaries(svm_untrained, plt.gca(), X, Y)
+    print("close plot window to continue")
+    plt.show()
     print("plotting the trained decision boundaries...")
     trained_plot_data = cake.plot_decision_boundaries(svm_trained, plt.gca(), X, Y)
     print("done, close plot window to end the program")
