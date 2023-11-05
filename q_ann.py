@@ -22,7 +22,7 @@ import q_circuit as qc
 # SETTINGS
 # ---
 torch.set_printoptions(precision=10, sci_mode=False)    # Set precision to 8 decimal places to fit with paper
-torch.manual_seed(1401)
+torch.manual_seed(1401)  # same seed then in Tester
 
 
 # ---
@@ -39,7 +39,7 @@ def probability(state):
 #     return torch.from_numpy(paper.init_params)
 
 def random_params(n_blocks, n_qubits):
-    return 2 * torch.pi * torch.rand((n_blocks, 2, n_qubits), dtype=torch.float64, requires_grad=True)
+    return 2 * torch.pi * torch.rand((n_blocks, qc.NUMBER_OF_BLOCK_PARAMS, n_qubits), dtype=torch.float64, requires_grad=True)
 
 
 # ---
@@ -162,12 +162,15 @@ def train(n_epochs, print_at, n_qubits, n_blocks, learning_rate):
         if epoch % print_at == 0:
             print("epoch:", epoch, 'kta-value:', -loss.item())
 
+    # extract resuling parameters
     result = model.state_dict().values()
+
     trained_params = [tensor.tolist() for tensor in result][0]
 
-    return trained_params
+    final_kta_val = model(X, Y).item()
 
-    # trained_model = QuantumNet(n_qubits=n_qubits, parameters=result)
-    # result_kta = trained_model(X, Y)
-    # print('kta-value:', result_kta.item())
+    print("final kta-value: ", final_kta_val)
+
+    return trained_params, final_kta_val
+
 

@@ -7,7 +7,7 @@ import torch
 # ---
 # Data is modifiable here
 # ---
-NUMBER_OF_SECTORS = 3
+NUMBER_OF_SECTORS = None
 np.random.seed(1358)
 
 
@@ -87,6 +87,27 @@ def plot_double_cake_data(xx, yy, ax, num_sectors=None):
     ax.axis("off")
 
     return ax
+
+
+def plot_decision_boundaries(classifier, ax, x, y, N_gridpoints=14):
+    _xx, _yy = np.meshgrid(np.linspace(-1, 1, N_gridpoints), np.linspace(-1, 1, N_gridpoints))
+
+    _zz = np.zeros_like(_xx)
+    for idx in np.ndindex(*_xx.shape):
+        _zz[idx] = classifier.predict(np.array([_xx[idx], _yy[idx]])[np.newaxis, :])
+
+    plot_data = {"_xx": _xx, "_yy": _yy, "_zz": _zz}
+    ax.contourf(
+        _xx,
+        _yy,
+        _zz,
+        cmap=mpl.colors.ListedColormap(["#FF0000", "#0000FF"]),
+        alpha=0.2,
+        levels=[-1, 0, 1],
+    )
+    plot_double_cake_data(x, y, ax)
+
+    return plot_data
 
 
 # ---

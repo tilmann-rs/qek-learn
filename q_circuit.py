@@ -1,7 +1,7 @@
 import q_library as qt
 
 
-# THIS FILE SERVES TO MODIFY THE QUANTUM CIRCUIT USING LAYERS FROM THE Q_LIBRARY
+# THIS FILE SERVES TO MODIFY THE QUANTUM CIRCUIT (QUANTUM EMBEDDING KERNEL) USING LAYERS FROM THE Q_LIBRARY
 
 # THE CURRENT ONE IS FROM Thomas Hubregtsen, David Wierichs, Elies Gil-Fuster, Peter-Jan H. S. Derks, Paul K. Faehrmann, and Johannes Jakob Meyer.
 # “Training Quantum Embedding Kernels on Near-Term Quantum Computers.” arXiv:2105.02276, 2021. page 10
@@ -18,6 +18,9 @@ import q_library as qt
 # - For the adjoint ansatz: the block parameters taken last first but themselves in right order -> reversed(params)
 
 # ---
+
+NUMBER_OF_BLOCK_PARAMS = 2  # results from the defined circuit, in this case: RY Layer and CRZ ring
+
 def block(num_q, x, block_params, start, state):
     state = qt.h_layer(num_q, state)
     state = qt.rz_layer(num_q, x, state, start)
@@ -34,6 +37,7 @@ def adj_block(num_q, x, block_params, start, state):
     return state
 
 
+# The Embedding Kernel of binary data (point1 and point2) in Quantum Space (resulting space)
 def circuit(num_q, point1, point2, params):
     state = qt.initial_state(num_q)
     for j, block_params in enumerate(params):
