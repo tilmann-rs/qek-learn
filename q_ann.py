@@ -160,7 +160,7 @@ def train(n_epochs, print_at, n_qubits, n_blocks, learning_rate):
         optimizer.step()
 
         if epoch % print_at == 0:
-            print("epoch:", epoch, 'kta-value:', -loss.item())
+            print("epoch:", epoch, 'kta:', -loss.item())
 
     # extract resuling parameters
     result = model.state_dict().values()
@@ -169,7 +169,7 @@ def train(n_epochs, print_at, n_qubits, n_blocks, learning_rate):
 
     final_kta_val = model(X, Y).item()
 
-    print("final kta-value: ", final_kta_val)
+    print("final kta: ", final_kta_val)
 
     return trained_params, final_kta_val
 

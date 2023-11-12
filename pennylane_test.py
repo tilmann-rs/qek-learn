@@ -20,15 +20,7 @@ NUMBER_OF_SECTORS = int(sys.argv[5])  # can be anything, originally 3
 PLOTTING = int(sys.argv[6])           # 0 or 1
 
 cake.NUMBER_OF_SECTORS = NUMBER_OF_SECTORS
-
-# plotting = input("Do you wish to plot the decision boundaries? (longer waiting time) y/n")
-#
-# if plotting.lower() == "yes":
-#     plotting = 1
-# elif plotting.lower() == "no":
-#     plotting = 0
-# else:
-#     print("Invalid response. Please enter 'yes' or 'no'.")
+pa.num_wires = NUMBER_OF_QUBITS
 
 
 # Getting the trained parameters
@@ -60,7 +52,7 @@ def get_accuracy(classifier, x, y):
 (X, Y) = (X.detach().numpy(), Y.detach().numpy())
 
 
-# Tests the parameters with help of the pennylane library and also the kernel function of paper.py, needs to be adjusted
+# Tests the parameters with help of the pennylane library and also the kernel function of paper.py, the layer function needs to be adjusted
 # in paper.py when testing a file with a different quantum embedding
 def pennylane_tester(parameters, x, y):
     kernel = lambda x1, x2: pa.kernel(x1, x2, parameters)
@@ -69,7 +61,7 @@ def pennylane_tester(parameters, x, y):
     svm = SVC(kernel=kernel_matrix).fit(x, y)
     accuracy = get_accuracy(svm, x, y)
     print("accuracy:  ", accuracy)
-    print("kta-value:  ", kta)
+    print("kta:  ", kta)
     return svm
 
 
@@ -86,10 +78,10 @@ svm_trained = pennylane_tester(trained_parameters, X, Y)
 print("--")
 
 if PLOTTING:
-    print("plotting the untrained decision boundaries...")
-    untrained_plot_data = cake.plot_decision_boundaries(svm_untrained, plt.gca(), X, Y)
-    print("close plot window to continue")
-    plt.show()
+    # print("plotting the untrained decision boundaries...")
+    # untrained_plot_data = cake.plot_decision_boundaries(svm_untrained, plt.gca(), X, Y)
+    # print("close plot window to continue")
+    # plt.show()
     print("plotting the trained decision boundaries...")
     trained_plot_data = cake.plot_decision_boundaries(svm_trained, plt.gca(), X, Y)
     print("done, close plot window to end the program")

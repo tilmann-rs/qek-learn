@@ -20,3 +20,12 @@
 # print("-- UNTRAINED --")
 # print("accuracy:  ", accuracy_random)
 # print("kta-value:  ", kta_random)
+
+# plotting = input("Do you wish to plot the decision boundaries? (longer waiting time) y/n")
+#
+# if plotting.lower() == "y":
+#     plotting = 1
+# elif plotting.lower() == "n":
+#     plotting = 0
+# else:
+#     print("Invalid response. Please enter 'y' or 'n'.")

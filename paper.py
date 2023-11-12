@@ -118,7 +118,9 @@ def random_params(num_wires, num_layers):
     return np.random.uniform(0, 2 * np.pi, (num_layers, 2, num_wires))
 
 
-dev = qml.device("default.qubit", wires=5, shots=None)
+num_wires = 5  # Value gets updated from pennylane_test.py
+
+dev = qml.device("default.qubit", wires=num_wires, shots=None)
 wires = dev.wires.tolist()
 
 
