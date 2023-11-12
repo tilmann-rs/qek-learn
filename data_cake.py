@@ -111,14 +111,14 @@ def plot_decision_boundaries(classifier, ax, x, y, N_gridpoints=14):
 
 
 # ---
-# DATESET FUNCTION TO CONVERT DATA INTO TRAINABLE PYTORCH TENSORS
+# DATESET FUNCTION TO INITIALIZE AND TO CONVERT DATA INTO TRAINABLE PYTORCH TENSORS
 #
 # ---
 def data():
     (x, y) = make_double_cake_data(NUMBER_OF_SECTORS)
 
     # plotting, comment out show to not get a window of the data
-    ax = plot_double_cake_data(x, y, plt.gca(), NUMBER_OF_SECTORS)
+    # ax = plot_double_cake_data(x, y, plt.gca(), NUMBER_OF_SECTORS)
     # plt.show()
 
     return torch.tensor(x, dtype=torch.float64, requires_grad=True), torch.tensor(y, dtype=torch.float64, requires_grad=True)

@@ -47,7 +47,7 @@ def get_accuracy(classifier, x, y):
     return 1 - np.count_nonzero(classifier.predict(x) - y) / len(y)
 
 
-# Cake data initialization
+# Cake data initialization and "translate" to numpy array
 (X, Y) = cake.data()
 (X, Y) = (X.detach().numpy(), Y.detach().numpy())
 
@@ -76,6 +76,7 @@ print("-- TRAINED --")
 trained_parameters = np.array(parameters_list)
 svm_trained = pennylane_tester(trained_parameters, X, Y)
 print("--")
+
 
 if PLOTTING:
     # print("plotting the untrained decision boundaries...")

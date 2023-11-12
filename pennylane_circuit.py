@@ -1,6 +1,6 @@
 import pennylane as qml
 
-NUMBER_OF_WIRES = 5
+NUMBER_OF_WIRES = None  # value comes from pennylane tester
 
 # ADAPT THE CIRCUIT IN PENNYLANE
 def layer(x, params, wires, i0=0, inc=1):
