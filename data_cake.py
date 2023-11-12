@@ -7,7 +7,7 @@ import torch
 # ---
 # Data is modifiable here
 # ---
-NUMBER_OF_SECTORS = None
+NUMBER_OF_SECTORS = None    # value comes from pennylane tester or from main program
 np.random.seed(1358)
 
 
