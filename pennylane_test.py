@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 
 import q_circuit as qc
 import data_cake as cake
+import pennylane_circuit as pc
 
 # -- USER INTERACTION --
 # for which file with which hyperparameters the user is looking for, NO print_at as hyperparameter (only used in input!)
@@ -19,6 +20,7 @@ NUMBER_OF_SECTORS = int(sys.argv[5])  # can be anything, originally 3
 PLOTTING = int(sys.argv[6])           # 0 or 1
 
 cake.NUMBER_OF_SECTORS = NUMBER_OF_SECTORS
+pc.NUMBER_OF_WIRES = NUMBER_OF_QUBITS
 
 
 # Getting the trained parameters
@@ -50,44 +52,10 @@ def get_accuracy(classifier, x, y):
 (X, Y) = (X.detach().numpy(), Y.detach().numpy())
 
 
-# ADAPT THE CIRCUIT IN PENNYLANE
-def layer(x, params, wires, i0=0, inc=1):
-    """Building block of the embedding ansatz"""
-    i = i0
-    for j, wire in enumerate(wires):
-        qml.Hadamard(wires=[wire])
-        qml.RZ(x[i % len(x)], wires=[wire])
-        i += inc
-        qml.RY(params[0, j], wires=[wire])
-
-    qml.broadcast(unitary=qml.CRZ, pattern="ring", wires=wires, parameters=params[1])
-
-
-def ansatz(x, params, wires):
-    """The embedding ansatz"""
-    for j, layer_params in enumerate(params):
-        layer(x, layer_params, wires, i0=j * len(wires))
-
-
-adjoint_ansatz = qml.adjoint(ansatz)
-
-dev = qml.device("default.qubit", wires=NUMBER_OF_QUBITS, shots=None)
-wires = dev.wires.tolist()
-
-@qml.qnode(dev, interface="autograd")
-def kernel_circuit(x1, x2, params):
-    ansatz(x1, params, wires=wires)
-    adjoint_ansatz(x2, params, wires=wires)
-    return qml.probs(wires=wires)
-
-def kernel(x1, x2, params):
-    return kernel_circuit(x1, x2, params)[0]
-
-
 # Tests the parameters with help of the pennylane library and also the kernel function of paper.py, the layer function needs to be adjusted
 # in paper.py when testing a file with a different quantum embedding
 def pennylane_tester(parameters, x, y):
-    current_kernel = lambda x1, x2: kernel(x1, x2, parameters)
+    current_kernel = lambda x1, x2: pc.kernel(x1, x2, parameters)
     kernel_matrix = lambda x1, x2: qml.kernels.kernel_matrix(x1, x2, current_kernel)
     kta = qml.kernels.target_alignment(x, y, current_kernel, assume_normalized_kernel=True)
     svm = SVC(kernel=kernel_matrix).fit(x, y)
