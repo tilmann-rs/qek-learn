@@ -13,24 +13,24 @@ This repository implements a scalable quantum embedding structure inspired by th
 
 - Loss Function: The model optimizes the Kernel-Target Alignment (KTA), a metric that evaluates how well the kernel with its variational parameters captures the dataset’s characteristics. This helps to ensure the embedding is suited for the learning task.
 
+- Modularity and easy to expand with new gates or circuit designs.
+
+- Compatible with PyTorch for gradient-based optimization.
+
 - Quantum Embedding: Built to enable experimentation with quantum embedding kernels, especially in the context of near-term quantum devices.
 
-- q_library.py
+- Core utilities for quantum circuits: q_library.py
 
-    Core utilities for quantum circuits:
-    
-    Gate Definitions: Differentiable RY, RZ, CRZ gates.
-    Layer Functions: Apply gates in parallel (ry_layer, rz_layer, crz_ring).
-    Initial State: Start state ∣0...0⟩∣0...0⟩.
-    Ring Closure: Handles periodic boundaries for gates.
+    - Gate Definitions: Differentiable RY, RZ, CRZ gates.
+    - Layer Functions: Apply gates in parallel (ry_layer, rz_layer, crz_ring).
+    - Initial State: Start state ∣0...0⟩∣0...0⟩.
+    - Ring Closure: Handles periodic boundaries for gates.
 
-- q_circuit.py
-
-    Defines the full quantum circuit:
-    
-    Blocks: Combines Hadamard, parameterized RZ, RY, and CRZ gates.
-    Adjoint Blocks: Implements Hermitian reversals for blocks.
-    Circuit: Stacks blocks and adjoint blocks for feature embedding.
+- Defines the full quantum circuit: q_circuit.py
+  
+    - Blocks: Combines Hadamard, parameterized RZ, RY, and CRZ gates.
+    - Adjoint Blocks: Implements Hermitian reversals for blocks.
+    - Circuit: Stacks blocks and adjoint blocks for feature embedding.
 
 ### Cake Dataset
 
