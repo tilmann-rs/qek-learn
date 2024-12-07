@@ -1,0 +1,5 @@
+matplotlib>=3.4.0
+numpy>=1.20.0
+torch>=1.9.0
+pennylane>=0.20.0
+scikit-learn>=1.0.0
