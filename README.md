@@ -9,11 +9,11 @@ This repository implements a scalable quantum embedding structure inspired by th
 
 ## Features
 
-    Scalability: Users can configure the number of qubits and layers in the quantum model, enabling flexibility in adapting to different hardware constraints and problem complexities.
+- Scalability: Users can configure the number of qubits and layers in the quantum model, enabling flexibility in adapting to different hardware constraints and problem complexities.
 
-    Loss Function: The model optimizes the Kernel-Target Alignment (KTA), a metric that evaluates how well the kernel with its variational parameters captures the dataset’s characteristics. This helps to ensure the embedding is suited for the learning task.
+- Loss Function: The model optimizes the Kernel-Target Alignment (KTA), a metric that evaluates how well the kernel with its variational parameters captures the dataset’s characteristics. This helps to ensure the embedding is suited for the learning task.
 
-    Quantum Embedding: Built to enable experimentation with quantum embedding kernels, especially in the context of near-term quantum devices.
+- Quantum Embedding: Built to enable experimentation with quantum embedding kernels, especially in the context of near-term quantum devices.
 
 ## Data and Cake Dataset
 
