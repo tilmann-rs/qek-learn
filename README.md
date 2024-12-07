@@ -44,16 +44,13 @@ This repository also includes the Pennylane Tester, a helper for evaluating the 
 ## Setup
 
 The project is executed using main.py. It trains a quantum neural network and evaluates its kernel-target alignment (KTA). The script requires several command-line arguments.
-Usage
-
-python main.py <EPOCHS> <PRINT_AT> <QUBITS> <BLOCKS> <LEARNING_RATE> <SECTORS>
 
 Parameters:
 
-    <EPOCHS>: Number of training epochs (e.g., 1000).
-    <PRINT_AT>: Frequency of loss printouts during training (e.g., 100).
-    <QUBITS>: Number of qubits (e.g., 5).
-    <BLOCKS>: Number of quantum circuit blocks (e.g., 5). Odd numbers work better currently.
-    <LEARNING_RATE>: Learning rate for training (e.g., 0.05).
-    <SECTORS>: Number of sectors in the dataset (e.g., 3).
+    <EPOCHS>: Number of training epochs
+    <PRINT_AT>: Frequency of loss printouts during training 
+    <QUBITS>: Number of qubits (e.g., 5)
+    <BLOCKS>: Number of quantum circuit blocks (e.g., 5) (Odd numbers work better currently)
+    <LEARNING_RATE>: Learning rate for training (e.g., 0.05)
+    <SECTORS>: Number of sectors in the dataset (e.g., 5)
 
