@@ -43,6 +43,10 @@ This repository also includes the Pennylane Tester, a helper for evaluating the 
 
 ## Setup
 
+Before running the project, install the required Python packages:
+
+    pip install -r requirements.txt
+
 The project is executed using main.py. It trains a quantum neural network and evaluates its kernel-target alignment (KTA). The script requires several command-line arguments.
 
 Parameters:
@@ -54,3 +58,15 @@ Parameters:
     <LEARNING_RATE>: Learning rate for training (e.g., 0.05)
     <SECTORS>: Number of sectors in the dataset (e.g., 5)
 
+Example:
+
+    python main.py 100 10 5 5 0.05 5
+
+
+
+If you need any help or encounter issues, please feel free to open an issue in this repository, and I’ll respond as soon as possible.
+
+
+### Acknowledgements
+
+This project was developed as part of my Summer 2023 research internship at Intelligent Systems Group at UPV. The core idea and research direction were provided by Jose Antonio Pascual, and I was responsible for implementing the code and conducting the experiments.
