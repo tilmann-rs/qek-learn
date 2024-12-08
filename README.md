@@ -11,7 +11,7 @@ This repository implements a scalable quantum embedding structure inspired by th
 
 - Scalability: Users can configure the number of qubits and layers in the quantum model, enabling flexibility in adapting to different hardware constraints and problem complexities.
 
-- Loss Function: The model optimizes the Kernel-Target Alignment (KTA), a metric that evaluates how well the kernel with its variational parameters captures the dataset’s characteristics. This helps to ensure the embedding is suited for the learning task.
+- The model optimizes the Kernel-Target Alignment (KTA), a metric that evaluates how well the kernel with its variational parameters captures the dataset’s characteristics. This helps to ensure the embedding is suited for the learning task.
 
 - Modularity and easy to expand with new gates or circuit designs.
 
