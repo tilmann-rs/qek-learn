@@ -1,7 +1,7 @@
 # Training variational parameters for Quantum Embedding Kernels using Neural Nets on Double-Cake Dataset
 
 ![grafik](https://github.com/user-attachments/assets/5b9b11c8-2b63-4c5a-a00c-95616cfffa59)
-
+(Figure of one block component of quantum embedding circuit, modeled with IBMs quantum composer)
 
 
 This repository implements a scalable quantum embedding structure inspired by the approach detailed in the paper Training Quantum Embedding Kernels on Near-Term Quantum Computers by Thomas Hubregtsen, David Wierichs, Elies Gil-Fuster, Peter-Jan H. S. Derks, Paul K. Faehrmann, and Johannes Jakob Meyer (2021) - https://arxiv.org/abs/2105.02276. Specifically, it utilizes the quantum embedding structure described on page 10 of the paper.
