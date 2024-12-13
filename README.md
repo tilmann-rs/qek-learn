@@ -1,6 +1,7 @@
 # Training variational parameters for Quantum Embedding Kernels using Neural Nets on Double-Cake Dataset
 
 ![grafik](https://github.com/user-attachments/assets/5b9b11c8-2b63-4c5a-a00c-95616cfffa59)
+
 (Figure of one block component of quantum embedding circuit, modeled with IBMs quantum composer)
 
 
