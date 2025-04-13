@@ -84,6 +84,7 @@ def k_fusion(dataset, num_q, params, labels):
     for i in range(num_points):
         for j in range(num_points):
             k = probability(qc.circuit(num_q, dataset[i], dataset[j], params)[0])
+            # Kernel-Target-Alignment, equation (28) in paper
             kernel_polarity = labels[i]*labels[j]*k + kernel_polarity
             square_sum_k = k ** 2 + square_sum_k
             square_sum_l = (labels[i]*labels[j]) ** 2 + square_sum_l
@@ -162,7 +163,7 @@ def train(n_epochs, print_at, n_qubits, n_blocks, learning_rate):
         if epoch % print_at == 0:
             print("epoch:", epoch, 'kta:', -loss.item())
 
-    # extract resuling parameters
+    # extract resulting parameters
     result = model.state_dict().values()
 
     trained_params = [tensor.tolist() for tensor in result][0]
