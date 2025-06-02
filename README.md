@@ -1,6 +1,6 @@
 ### Quantum Embedding Kernel Training via Kernel Target Alignment
 
-This repository implements a trainable, scalable quantum embedding kernel structure with variational parameters.
+This repository implements a trainable, scalable quantum embedding kernel structure with variational parameters and contains my traineeship evaluation.
 
 
 ## Context
