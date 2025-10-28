@@ -1,6 +1,6 @@
-### Quantum Embedding Kernel Training via Kernel Target Alignment
+# Quantum Embedding Kernel Training via Kernel Target Alignment
 
-This repository implements a trainable, scalable quantum embedding kernel structure with variational parameters and contains my [Traineeship Evaluation](Traineeship_Certificate_Tilmann.pdf).
+This repository implements a trainable, scalable quantum embedding kernel structure with variational parameters.
 
 
 ## Context
@@ -16,8 +16,6 @@ The variational parameters of this QEK are optimized for a given dataset by maxi
 This repository also actively generates a synthetic dataset called Double-Cake Data, where datapoints are arranged within two non-overlapping circular sectors and are classified according to the sector they belong to.
 
 Furthermore, the repository includes the Pennylane Tester, a utility for evaluating the performance of the trained quantum embedding models based on their optimized parameters.
-
-
 
 ## Setup
 
