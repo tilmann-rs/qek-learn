@@ -7,7 +7,8 @@ This repository implements a trainable, scalable quantum embedding kernel struct
 
 Quantum embedding kernels (QEKs) are a quantum kernel technique that can provide insights into learning problems by leveraging quantum feature spaces and are considered suitable for noisy intermediate-scale quantum (NISQ) devices due to their potential for shallower circuit requirements. The specific QEK implemented in this project is based on the quantum embedding structure detailed on page 10 of the paper "Training Quantum Embedding Kernels on Near-Term Quantum Computers" by Thomas Hubregtsen et al. (2021) (https://arxiv.org/abs/2105.02276). 
 
-![Figure of one block component of quantum embedding circuit, modeled with IBMs quantum circuit composer](https://github.com/user-attachments/assets/5b9b11c8-2b63-4c5a-a00c-95616cfffa59)
+![Figure of one block component of quantum embedding circuit, modeled with IBM's quantum circuit composer](https://github.com/user-attachments/assets/5b9b11c8-2b63-4c5a-a00c-95616cfffa59)
+<p align="center"><em>Figure: One block component of quantum embedding circuit, modeled with IBM's quantum circuit composer</em></p>
 
 The variational parameters of this QEK are optimized for a given dataset by maximizing the kernel-target alignment, a heuristic believed to correlate with improved achievable classification accuracy.
 
@@ -24,12 +25,11 @@ Furthermore, the repository includes the Pennylane Tester, a utility for evaluat
     ```
 
 2. Install required Python packages:
-    - On Windows:
-      ```bash
-      pip install -r requirements.txt
-      ```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-3. The project is executed using main.py, it trains the neural network and requires several command-line arguments:
+3. The project is executed using main.py, it trains the quantum circuit and requires several command-line arguments:
     ```bash
     <EPOCHS>: Number of training epochs
     <PRINT_AT>: Frequency of loss printouts during training 
