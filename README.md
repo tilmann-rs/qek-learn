@@ -11,7 +11,7 @@ Quantum embedding kernels (QEKs) are a quantum kernel technique that can provide
   <br>
   <img src="https://github.com/user-attachments/assets/5b9b11c8-2b63-4c5a-a00c-95616cfffa59" alt="Figure of one block component of quantum embedding circuit, modeled with IBM's quantum circuit composer">
   <br>
-  <em>One block component of quantum embedding circuit, modeled with IBM's quantum circuit composer</em>
+  <em>One block component of quantum embedding circuit, modeled with IBM's quantum circuit composer (https://quantum.cloud.ibm.com/composer)</em>
   <br>
   <br>
 </div>
