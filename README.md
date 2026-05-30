@@ -7,8 +7,12 @@ This repository implements a trainable, scalable quantum embedding kernel struct
 
 Quantum embedding kernels (QEKs) are a quantum kernel technique that can provide insights into learning problems by leveraging quantum feature spaces and are considered suitable for noisy intermediate-scale quantum (NISQ) devices due to their potential for shallower circuit requirements. The specific QEK implemented in this project is based on the quantum embedding structure detailed on page 10 of the paper "Training Quantum Embedding Kernels on Near-Term Quantum Computers" by Thomas Hubregtsen et al. (2021) (https://arxiv.org/abs/2105.02276). 
 
-![Figure of one block component of quantum embedding circuit, modeled with IBM's quantum circuit composer](https://github.com/user-attachments/assets/5b9b11c8-2b63-4c5a-a00c-95616cfffa59)
-<p align="center"><em>Figure: One block component of quantum embedding circuit, modeled with IBM's quantum circuit composer</em></p>
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/5b9b11c8-2b63-4c5a-a00c-95616cfffa59" alt="Figure of one block component of quantum embedding circuit, modeled with IBM's quantum circuit composer">
+  <br>
+  <em>One block component of quantum embedding circuit, modeled with IBM's quantum circuit composer</em>
+</div>
+
 
 The variational parameters of this QEK are optimized for a given dataset by maximizing the kernel-target alignment, a heuristic believed to correlate with improved achievable classification accuracy.
 
